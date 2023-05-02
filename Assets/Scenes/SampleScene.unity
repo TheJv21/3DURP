@@ -200,14 +200,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.14221594, y: -0.27011976, z: 0.04364883, w: 0.95126486}
+  m_LocalPosition: {x: 7.44, y: 6.42, z: -10.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.107, y: -31.649, z: 0.372}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -828,6 +828,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &2110515895 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5983718021556406289, guid: 360fc6ee50ee68b489e6a0c543eb6718,
+    type: 3}
+  m_PrefabInstance: {fileID: 4463483144574587232}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4463483144574587232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -848,7 +854,7 @@ PrefabInstance:
     - target: {fileID: 5983718021556406289, guid: 360fc6ee50ee68b489e6a0c543eb6718,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2
+      value: 7.06
       objectReference: {fileID: 0}
     - target: {fileID: 5983718021556406289, guid: 360fc6ee50ee68b489e6a0c543eb6718,
         type: 3}
@@ -918,6 +924,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Enemigo
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917115981516409858, guid: b631da6bbc953054fac60fcdfd833b02,
+        type: 3}
+      propertyPath: objetivo
+      value: 
+      objectReference: {fileID: 2110515895}
+    - target: {fileID: 2312951642516690498, guid: b631da6bbc953054fac60fcdfd833b02,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7218561314057513275, guid: b631da6bbc953054fac60fcdfd833b02,
         type: 3}
