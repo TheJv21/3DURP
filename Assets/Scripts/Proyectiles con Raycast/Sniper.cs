@@ -8,7 +8,6 @@ public class Sniper : MonoBehaviour
 	[SerializeField] private float ataque = 5f;
 	[SerializeField] private float tiempoEntreDisparo = 0.5f;
 	[SerializeField] private float rango = 100f;
-	[SerializeField] private int cantidadDisparos = 3;
 	[SerializeField] private LayerMask layerMask;
  
     [Header("GameObjects")]

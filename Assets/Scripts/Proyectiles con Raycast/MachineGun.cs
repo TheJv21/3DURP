@@ -8,6 +8,7 @@ public class MachineGun : MonoBehaviour
     [Header("Attributes")]
 	[SerializeField] private float ataque = 5f;
 	[SerializeField] private float tiempoEntreDisparo = 0.5f;
+    [SerializeField] private float tiempoRafaga = 0.2f;
 	[SerializeField] private float rango = 100f;
 	[SerializeField] private int cantidadDisparos = 3;
 	[SerializeField] private LayerMask layerMask;
@@ -33,7 +34,7 @@ public class MachineGun : MonoBehaviour
     	for (int i = 0; i < cantidadDisparos; i++)
     {
         ProcesarRaycast();
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSecondsRealtime(tiempoRafaga);
     }
     	yield return new WaitForSecondsRealtime(tiempoEntreDisparo);
     	puedeDisparar = true;

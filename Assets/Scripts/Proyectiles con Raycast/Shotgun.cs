@@ -10,6 +10,8 @@ public class Shotgun : MonoBehaviour
 	[SerializeField] private float tiempoEntreDisparo = 0.5f;
 	[SerializeField] private float rango = 100f;
 	[SerializeField] private int cantidadDisparos = 3;
+	[SerializeField] private float dispersionHorizontal = 5f;
+	[SerializeField] private float dispersionVertical = 5f;
 	[SerializeField] private LayerMask layerMask;
  
     [Header("GameObjects")]
@@ -30,14 +32,25 @@ public class Shotgun : MonoBehaviour
 	private IEnumerator Disparar()
 	{
     	puedeDisparar = false;
-    	ProcesarRaycast();
+    	for (int i = 0; i < cantidadDisparos; i++)
+			{
+				ProcesarRaycast();
+			}
     	yield return new WaitForSecondsRealtime(tiempoEntreDisparo);
     	puedeDisparar = true;
 	}
  
 	private void ProcesarRaycast()
 	{
-    	if (Physics.Raycast(cameraPrimeraPersona.position, CalcularDireccion(), out RaycastHit hit, rango, layerMask))
+
+	float Horizontal = Random.Range(-(dispersionHorizontal), dispersionHorizontal);
+    float Vertical = Random.Range(-(dispersionVertical), dispersionVertical); 
+
+    Vector3 direccionDisparo = CalcularDireccion();
+    direccionDisparo = Quaternion.Euler(Vertical, Horizontal, 0f) * direccionDisparo;
+
+
+    	if (Physics.Raycast(cameraPrimeraPersona.position, direccionDisparo, out RaycastHit hit, rango, layerMask))
     	{
         	TrailRenderer trail = Instantiate(trailPrefab, origenProyectil.transform.position, Quaternion.identity);
  
