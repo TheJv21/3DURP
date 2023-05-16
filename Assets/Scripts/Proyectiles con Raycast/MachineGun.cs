@@ -1,0 +1,77 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class MachineGun : MonoBehaviour
+{
+    [Header("Attributes")]
+	[SerializeField] private float ataque = 5f;
+	[SerializeField] private float tiempoEntreDisparo = 0.5f;
+	[SerializeField] private float rango = 100f;
+	[SerializeField] private int cantidadDisparos = 3;
+	[SerializeField] private LayerMask layerMask;
+ 
+    [Header("GameObjects")]
+	[SerializeField] private Transform cameraPrimeraPersona;
+	[SerializeField] private Transform origenProyectil;
+	[SerializeField] private TrailRenderer trailPrefab;
+ 
+	private bool puedeDisparar = true;
+ 
+	public void ProcesarEntrada(bool value)
+	{
+    	if (puedeDisparar && value)
+    	{
+            StartCoroutine(Disparar());
+    	}
+	}
+ 
+	private IEnumerator Disparar()
+	{
+    	puedeDisparar = false;
+    	for (int i = 0; i < cantidadDisparos; i++)
+    {
+        ProcesarRaycast();
+        yield return new WaitForSecondsRealtime(0.1f);
+    }
+    	yield return new WaitForSecondsRealtime(tiempoEntreDisparo);
+    	puedeDisparar = true;
+	}
+ 
+	private void ProcesarRaycast()
+	{
+    	if (Physics.Raycast(cameraPrimeraPersona.position, CalcularDireccion(), out RaycastHit hit, rango, layerMask))
+    	{
+        	TrailRenderer trail = Instantiate(trailPrefab, origenProyectil.transform.position, Quaternion.identity);
+ 
+            StartCoroutine(MoverTrail(trail, hit));
+ 
+        	if (hit.transform.TryGetComponent<Salud>(out Salud targetHealth))
+        	{
+                targetHealth.PerderSalud(ataque);
+        	}
+    	}
+	}
+ 
+	private IEnumerator MoverTrail(TrailRenderer trail, RaycastHit hit)
+	{
+    	float t = 0f;
+ 
+    	while (t < 1)
+    	{
+            trail.transform.position = Vector3.Lerp(origenProyectil.transform.position, hit.point, t);
+        	t += Time.deltaTime / trail.time;
+        	yield return null;
+    	}
+ 
+    	trail.transform.position = hit.point;
+    	Destroy(trail.gameObject, trail.time);
+	}
+ 
+	private Vector3 CalcularDireccion()
+	{
+    	Vector3 direction = cameraPrimeraPersona.forward;
+    	return direction;
+	}
+}
