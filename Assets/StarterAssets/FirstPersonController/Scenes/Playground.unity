@@ -1464,7 +1464,7 @@ PrefabInstance:
     - target: {fileID: 2949379572224770164, guid: 276a821a500e6634d98fb1fcddbf77ec,
         type: 3}
       propertyPath: tiempoEntreDisparo
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2949379572224770164, guid: 276a821a500e6634d98fb1fcddbf77ec,
         type: 3}
@@ -1504,7 +1504,7 @@ PrefabInstance:
     - target: {fileID: 7188864782282886426, guid: f7c9ef31497f5ed489fbb895d257cfb7,
         type: 3}
       propertyPath: tiempoEntreDisparo
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7188864782282886426, guid: f7c9ef31497f5ed489fbb895d257cfb7,
         type: 3}
